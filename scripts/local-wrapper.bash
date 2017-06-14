@@ -59,10 +59,10 @@ function is_git_repo_state_clean() {
 export -f is_git_repo_state_clean
 
 # We need to differentiate between trusted and untrusted builds
-if [[ ! -z $TRAVIS_SECURE_ENV_VARS ]]
+if [[ $TRAVIS_SECURE_ENV_VARS == true]]
 then
-	export TRUSTED_BUILD="true"
 	echo "-- Trusted build"
+	export TRUSTED_BUILD="true"
 else
 	echo "-- Untrusted build"
 fi
